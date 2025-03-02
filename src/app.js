@@ -5,6 +5,7 @@ function App() {
   const [translatedText, setTranslatedText] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [error, setError] = useState(null); // for error handling
+  const [manualInput, setManualInput] = useState(''); // input text from user manually
 
   // Handle Speech Recognition using Azure Cognitive Services
   const handleSpeechRecognition = () => {
@@ -31,7 +32,9 @@ function App() {
   // Handle Text Translation using Azure Translator
   const handleTranslation = async () => {
     try {
-      if (!speechText) {
+      const textToTranslate = manualInput || speechText; // use speechText or manualInput if available
+
+      if (!textToTranslate) {
         setError('Please provide some text to translate.');
         return;
       }
@@ -43,7 +46,7 @@ function App() {
           'Ocp-Apim-Subscription-Region': process.env.REACT_APP_TRANSLATOR_REGION,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify([{ Text: speechText }])
+        body: JSON.stringify([{ Text: textToTranslate }])
       });
 
       if (!response.ok) {
@@ -60,12 +63,14 @@ function App() {
   // Handle Search using Azure Cognitive Search
   const handleSearch = async () => {
     try {
-      if (!speechText) {
+      const textToSearch = manualInput || speechText; // use speechText or manualInput if available
+
+      if (!textToSearch) {
         setError('Please provide text for search.');
         return;
       }
 
-      const response = await fetch(`${process.env.REACT_APP_SEARCH_ENDPOINT}/indexes/your-index/docs?api-key=${process.env.REACT_APP_SEARCH_API_KEY}&search=${speechText}`);
+      const response = await fetch(`${process.env.REACT_APP_SEARCH_ENDPOINT}/indexes/your-index/docs?api-key=${process.env.REACT_APP_SEARCH_API_KEY}&search=${textToSearch}`);
       
       if (!response.ok) {
         throw new Error('Search API failed');
@@ -81,10 +86,21 @@ function App() {
   return (
     <div className="App">
       <h1>Azure Cognitive Services Demo</h1>
-      
+
       {/* Speech Recognition Button */}
       <button onClick={handleSpeechRecognition}>Start Speech Recognition</button>
       <p>{speechText}</p>
+
+      {/* Manual Text Input for Translation and Search */}
+      <div>
+        <label htmlFor="manualInput">Enter Text for Translation or Search:</label>
+        <input
+          type="text"
+          id="manualInput"
+          value={manualInput}
+          onChange={(e) => setManualInput(e.target.value)} // update manualInput
+        />
+      </div>
 
       {/* Translation Button */}
       <button onClick={handleTranslation}>Translate Text</button>
