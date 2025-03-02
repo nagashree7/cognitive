@@ -36,6 +36,10 @@ jobs:
         
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
+
+      # Set NODE_OPTIONS for legacy OpenSSL
+      - name: Set NODE_OPTIONS for legacy OpenSSL
+        run: echo "NODE_OPTIONS=--openssl-legacy-provider" >> $GITHUB_ENV
         
       - name: Get Id Token
         uses: actions/github-script@v6
