@@ -1,0 +1,39 @@
+{
+    "name": "azure-cognitive-services-demo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "dependencies": {
+      "axios": "^0.21.1",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "react-scripts": "4.0.3",
+      "react-speech-recognition": "^2.1.0"
+    },
+    "devDependencies": {
+      "gh-pages": "^3.1.0"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject",
+      "deploy": "gh-pages -d build"
+    },
+    "homepage": ".",
+    "engines": {
+      "node": "14.x.x"
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
+  
