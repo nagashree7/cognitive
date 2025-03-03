@@ -5,7 +5,7 @@ import azure.cognitiveservices.speech as speechsdk
 import random
 
 # ✅ Azure Credentials (Replace with actual credentials)
-TRANSLATOR_KEY = "5L9TfuqNBF8G42lz7Uz5c9Uf5554SmZ7vCtiIFrxsaBk5DI0p1DLJQQJ99BCACMsfrFXJ3w3AAAbACOGn7OY"
+TRANSLATOR_KEY = "5L9TfuqNBF8G42lz7Uz5c9Uf5554SmZ7vCtiIFrxsaBk5DI0p1DLJQQJ99BCACMsfrFXJ3w3AAAbACOGn7OY" 
 TRANSLATOR_REGION = "westus3"
 TRANSLATOR_ENDPOINT = "https://api.cognitive.microsofttranslator.com/translate"
 
