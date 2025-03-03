@@ -45,7 +45,7 @@ jobs:
         id: deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: "b5dc80a2e4d7210c781c5c3debba2beee295648274995782353b75602a62dc6406-7553219b-5c6e-48e3-9384-d7145a2f33dc01e192006f231d1e"  # Directly pass the API token here
+          azure_static_web_apps_api_token: "1f56e4424a4b0eab9e734391e8987ec68ced676e1e4b3d719f168864fa86afcc06-2b094e17-091b-4817-8ec4-1198e51d5e1401e03020e88a0b1e"  # Directly pass the API token here
           action: "upload"
           app_location: "/"   # Point to the root directory of the Python project
           api_location: ""    # Leave blank if no API (Gradio app is API-free)
