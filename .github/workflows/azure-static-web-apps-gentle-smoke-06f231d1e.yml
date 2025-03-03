@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r
+          pip install -r requiremnts.txt
 
       # Set NODE_OPTIONS for legacy OpenSSL to resolve the build error
       - name: Set NODE_OPTIONS for legacy OpenSSL
