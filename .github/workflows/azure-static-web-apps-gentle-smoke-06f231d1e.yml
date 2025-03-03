@@ -18,51 +18,38 @@ jobs:
       id-token: write
       contents: read
     steps:
+      # Check out the code
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
 
-      # Set up Python environment
-      - name: Set up Python
+      # Set up Python
+      - name: Set up Python 3.9
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'  # Use a different version (e.g., 3.8 or 3.10)
+          python-version: 3.9
 
-      # Install dependencies (ensure requirements.txt is in the root folder)
+      # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Set NODE_OPTIONS for legacy OpenSSL to resolve the build error
-      - name: Set NODE_OPTIONS for legacy OpenSSL
+      # Set up environment for Gradio
+      - name: Set NODE_OPTIONS for legacy OpenSSL (if applicable)
         run: echo "NODE_OPTIONS=--openssl-legacy-provider" >> $GITHUB_ENV
 
-      # Install OIDC Client from Core Package
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-
-      # Get Id Token for Authentication
-      - name: Get Id Token
-        uses: actions/github-script@v6
-        id: idtoken
-        with:
-          script: |
-            const coredemo = require('@actions/core')
-            return await coredemo.getIDToken()
-          result-encoding: string
-
-      # Build and Deploy the app (assuming API is in the 'api' folder or similar)
-      - name: Build And Deploy
-        id: builddeploy
+      # Deploy the Gradio app
+      - name: Deploy Gradio app
+        id: deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "upload"
-          app_location: "/"  # App source code path (static files location)
-          api_location: "api"  # API source code path (your Python backend, if any)
-          output_location: ""  # Built app content directory - optional
+          app_location: "/"   # Point to the root directory of the Python project
+          api_location: ""    # If you have API, set it here; otherwise leave blank
+          output_location: "" # Leave empty as Gradio doesn't output static files
           github_id_token: ${{ steps.idtoken.outputs.result }}
         env:
           NODE_OPTIONS: --openssl-legacy-provider
