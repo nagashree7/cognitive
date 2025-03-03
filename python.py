@@ -5,16 +5,16 @@ import azure.cognitiveservices.speech as speechsdk
 import random
 
 # ✅ Azure Credentials (Replace with actual credentials)
-TRANSLATOR_KEY = "5L9TfuqNBF8G42lz7Uz5c9Uf5554SmZ7vCtiIFrxsaBk5DI0p1DLJQQJ99BCACMsfrFXJ3w3AAAbACOGn7OY"
+TRANSLATOR_KEY = "DEhHCE5cQjvgQKgGED6jnRXsHy35nitDr3s08vxI9vxFi2L4ZRKxJQQJ99BCAC8vTInXJ3w3AAAbACOGsQDG" 
 TRANSLATOR_REGION = "westus3"
 TRANSLATOR_ENDPOINT = "https://api.cognitive.microsofttranslator.com/translate"
 
-SPEECH_KEY = "FX6xRY5tlz8FUYchLJBQYCJd4SWHKlpODnXEwUaqP5YW0jf0cJPtJQQJ99BCACMsfrFXJ3w3AAAYACOGrL39"
+SPEECH_KEY = "2zmUjopIuml8BZ90sJrwhAVBmOpigL90C6sxRuskiTiP7Ubb8BTXJQQJ99BCAC8vTInXJ3w3AAAYACOGL6Ku"
 SPEECH_REGION = "westus3"
 AUTH_URL = f"https://{SPEECH_REGION}.api.cognitive.microsoft.com/sts/v1.0/issuetoken"
 
 # ✅ Azure Cognitive Search Credentials
-SEARCH_KEY = "0wdB1jbbMaXeZmE73dcJxkv6HZAXCON01sezMFaI0sAzSeBCa9tt"
+SEARCH_KEY = "SiLteRU8jfS8myu0Ru16ebxIrs5FQz1Yd3tH4Ds4frAzSeCSxKua"
 SEARCH_ENDPOINT = "https://demo-search-service-dev-wus3-022.search.windows.net"
 SEARCH_INDEX = "realestate-us-sample-index"
 
