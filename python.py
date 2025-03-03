@@ -15,7 +15,7 @@ AUTH_URL = f"https://{SPEECH_REGION}.api.cognitive.microsoft.com/sts/v1.0/issuet
 
 # ✅ Azure Cognitive Search Credentials
 SEARCH_KEY = "SiLteRU8jfS8myu0Ru16ebxIrs5FQz1Yd3tH4Ds4frAzSeCSxKua"
-SEARCH_ENDPOINT = "https://demo-search-service-dev-wus3-022.search.windows.net"
+SEARCH_ENDPOINT = "https://cogsearchdemo.search.windows.net"
 SEARCH_INDEX = "realestate-us-sample-index"
 
 # ✅ Define Available Languages
